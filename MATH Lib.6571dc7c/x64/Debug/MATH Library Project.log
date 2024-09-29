@@ -1,0 +1,32 @@
+﻿  main.cpp
+C:\Visual Studio\MATH Library Project\source.h(56,19): warning C4305: '+=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(57,19): warning C4305: '+=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(58,19): warning C4305: '+=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(61,19): warning C4305: '-=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(62,19): warning C4305: '-=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(63,19): warning C4305: '-=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(67,23): warning C4305: '-=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(70,23): warning C4305: '+=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(73,13): warning C4305: '+=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Visual Studio\MATH Library Project\source.h(76,13): warning C4305: '-=': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+  MATH Library Project.vcxproj -> C:\Visual Studio\MATH Library Project\x64\Debug\MATH Library Project.exe

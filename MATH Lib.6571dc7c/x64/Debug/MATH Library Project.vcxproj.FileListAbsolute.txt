@@ -1,0 +1,2 @@
+C:\Visual Studio\MATH Library Project\x64\Debug\glfw3.dll
+C:\Visual Studio\MATH Library Project\MATH Lib.6571dc7c\x64\Debug\MATH Lib.8563E2E4.Up2Date
