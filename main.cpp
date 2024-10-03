@@ -92,53 +92,34 @@ int main() {
 
 	vec3 scaleFactor(1.0f, 1.0f, 0.0f);
 	vec3 shift_positon(0.0f, 0.0f, 0.0f);
-	Mat4 transform = Mat4();
-	Mat4 translate = Mat4();
+	
 	Mat4 rotation = Mat4();
-	Mat4 projection = Mat4();
 	Mat4 view = Mat4();
 	Mat4 result = Mat4();
-	float angle = 0; 
-	float fov = 1.0f;
-	float aspectRatio = (float)WIND_HEIGT / (float)WIND_WID;
-	float nearPlane = 0.5f;
-	float farPlane = 1.0f;
+	Mat4 scale = Mat4();
 
-	vec3 cameraPos(0.0f, 0.0f, 3.0f);
-	vec3 cameraTarget(0.0f, 0.0f, 0.0f);
-	vec3 cameraUp(0.0f, 1.0f, 0.0f);
+	float angle = 0; 
+
+	vec3 viewAxis(0.0f, 0.0f, 0.5f);
 
 	while (!glfwWindowShouldClose(window)) {
 		glClearColor(0.4f, 0.6f, 0.4f, 0.5f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		//mathemetical stuff
-		Mat4 scaleMatrix = transform.scale(scaleFactor);
-		Mat4 translateMatrix = translate.translationMatrixf(shift_positon);
-		Mat4 rotationXMatrix = rotation.rotationXaxisf(angle);
+		
+		Mat4 scaleMatrix = scale.scale(scaleFactor);
 		Mat4 rotationYMatrix = rotation.rotationYaxisf(angle);
-		Mat4 rotationZMatrix = rotation.rotationZaxisf(angle);
-		Mat4 resultMatrix = rotationYMatrix;
-		view = view.lookAt(cameraPos, cameraTarget, cameraUp);
-		Mat4 projectionMatrix = projection.perspective(fov, aspectRatio, nearPlane, farPlane);;
-		Mat4 mvpMatrix = projectionMatrix.multiply(view).multiply(resultMatrix);
+		Mat4 viewMatrix = view.translationMatrixf(viewAxis);
+		Mat4 resultMatrix = viewMatrix.multiply(rotationYMatrix);
 
-		unsigned int unl = glGetUniformLocation(shaderProgram, "mvpMatrix");
-		glUniformMatrix4fv(unl, 1, GL_TRUE, mvpMatrix.mat);
-
-		
-		/*unsigned int unl = glGetUniformLocation(shaderProgram, "transform");
-		unsigned int unl2 = glGetUniformLocation(shaderProgram, "translate");
-		unsigned int unl3 = glGetUniformLocation(shaderProgram, "rotation");
-		glUniformMatrix4fv(unl, 1, GL_TRUE, scaleMatrix.mat);
-		glUniformMatrix4fv(unl2, 1, GL_TRUE, translateMatrix.mat);
-		glUniformMatrix4fv(unl3, 1, GL_TRUE, resultMatrix.mat);*/
-		
-
+		unsigned int unl = glGetUniformLocation(shaderProgram, "rotationMatrix");
+		glUniformMatrix4fv(unl, 1, GL_FALSE, resultMatrix.mat);
+		unsigned int unl2 = glGetUniformLocation(shaderProgram, "scaleMatrix");
+		glUniformMatrix4fv(unl2, 1, GL_TRUE, scaleMatrix.mat);
 
 		glUseProgram(shaderProgram);
 		glBindVertexArray(vao);
 		Input(window,&scaleFactor,&shift_positon,&angle);
-		//printVec3(shift_positon);
 		getSecond();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glfwSwapBuffers(window);
@@ -150,5 +131,3 @@ int main() {
 	
 	glfwTerminate();
 }
-
-
